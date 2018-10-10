@@ -1,0 +1,31 @@
+{
+  "name": "@slimio/addon-factory",
+  "version": "1.0.0",
+  "description": "SlimIO Addon Factory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SlimIO/AddonFactory.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SlimIO/AddonFactory/issues"
+  },
+  "homepage": "https://github.com/SlimIO/AddonFactory#readme",
+  "dependencies": {
+    "@slimio/utils": "^0.4.0"
+  },
+  "devDependencies": {
+    "@escommunity/minami": "^1.0.0",
+    "@slimio/eslint-config": "^1.1.8",
+    "@types/node": "^10.11.7",
+    "ava": "^0.25.0",
+    "eslint": "^5.6.1",
+    "nyc": "^13.0.1"
+  }
+}
