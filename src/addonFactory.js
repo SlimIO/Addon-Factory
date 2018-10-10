@@ -3,43 +3,62 @@ const { writeFile, mkdir } = require("fs").promises;
 const { join } = require("path");
 
 // Require Third-Party Dependencies
-const { taggedString } = require("@slimio/utils");
+const { taggedString, createDirectory } = require("@slimio/utils");
+const is = require("@slimio/is");
+
+// Require Internal Dependencies
+const CallbackFactory = require("./callbackFactory");
 
 // Helpers
 const AddonParts = {
     require: "const Addon = require(\"@slimio/addon\");\n\n",
     create: taggedString`const ${0} = new Addon("${0}");\n\n`,
     export: taggedString`module.exports = ${0};\n`,
-    callback: taggedString`${0}.registerCallback("${1}", async() => {\n    return ${2};\n});\n\n`,
+    registerCallback: taggedString`${0}.registerCallback("${1}", ${1});\n`,
+    registerCallbackInOne: taggedString`${0}.registerCallback("${1}", ${2});\n\n`,
     ready: taggedString`${0}.on(\"start\", () => {\n    ${0}.ready();\n});\n\n`
 };
 
+// Symbols
+const Callbacks = Symbol("Callbacks");
+
 /**
  * @class AddonFactory
+ * 
+ * @property {String} name
+ * @property {Boolean} splitCallbackRegistration
  */
 class AddonFactory {
 
     /**
      * @constructor
      * @param {!String} name addonName
+     * @param {Object=} [options={}] Factory Options
+     * @throws {TypeError}
      */
-    constructor(name) {
+    constructor(name, options = Object.create(null)) {
+        if (typeof name !== "string") {
+            throw new TypeError("name argument should be typeof string");
+        }
+
         this.name = name;
-        this.callbacks = [];
+        /** @type {CallbackFactory[]} */
+        this[Callbacks] = [];
+        this.splitCallbackRegistration = is.bool(options.splitCallbackRegistration) ? options.splitCallbackRegistration : true;
     }
 
     /**
      * @public
-     * @method createCallback
+     * @method addCallback
      * @param {!String} name callback name
      * @param {*} returnValue callback return value
      * @returns {this}
      */
-    createCallback(name, returnValue) {
-        if (typeof name !== "string") {
-            throw new TypeError("name argument should be typeof string");
+    addCallback(callback) {
+        if (!(callback instanceof CallbackFactory)) {
+            throw new TypeError("callback should be instanceof CallbackFactory!");
         }
-        this.callbacks.push([name, returnValue.toString()]);
+        this[Callbacks].push(callback);
 
         return this;
     }
@@ -60,14 +79,23 @@ class AddonFactory {
 
         // Create Addon dir
         const addonDir = join(path, this.name);
-        await mkdir(addonDir);
+        await createDirectory(addonDir);
 
         // Generate the Addon code
-        const fRet = [AddonParts.require];
-        fRet.push(AddonParts.create(this.name));
-        for (const [name, returnValue] of this.callbacks) {
-            fRet.push(AddonParts.callback(this.name, name, returnValue));
+        const fRet = [AddonParts.require, AddonParts.create(this.name)];
+        if (this.splitCallbackRegistration) {
+            fRet.push(...this[Callbacks].map((cb) => cb.toString() + "\n\n"));
+            for (const cb of this[Callbacks]) {
+                fRet.push(AddonParts.registerCallback(this.name, cb.name));
+            }
+            fRet.push("\n");
         }
+        else {
+            for (const cb of this[Callbacks]) {
+                fRet.push(AddonParts.registerCallbackInOne(this.name, cb.name, cb.toString()));
+            }
+        }
+        
         fRet.push(AddonParts.ready(this.name), AddonParts.export(this.name));
 
         // Write Index.js File
