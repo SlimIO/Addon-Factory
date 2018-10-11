@@ -50,7 +50,7 @@ class AddonFactory {
         /** @type {Set<String>} */
         this.callbacks = new Set();
 
-        /** @type {Map<String, Object>} */
+        /** @type {Map<String, String>} */
         this.schedules = new Map();
 
         this.splitCallbackRegistration = is.bool(options.splitCallbackRegistration) ? options.splitCallbackRegistration : true;
@@ -92,7 +92,7 @@ class AddonFactory {
     /**
      * @public
      * @async
-    * @method generater
+     * @method generater
      * @param {!String} path directory (or path) where we want to create the Addon
      * @returns {Promise<this>}
      *

@@ -6,7 +6,7 @@ const is = require("@slimio/is");
  * @class CallbackFactory
  *
  * @property {String} name
- * @property {any} returnValue
+ * @property {String} returnValue
  */
 class CallbackFactory {
 
@@ -24,6 +24,7 @@ class CallbackFactory {
         }
 
         this.name = name;
+        /** @type {String} */
         this.returnValue = null;
     }
 
