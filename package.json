@@ -1,6 +1,6 @@
 {
   "name": "@slimio/addon-factory",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "SlimIO Addon Factory",
   "main": "index.js",
   "scripts": {
