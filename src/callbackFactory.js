@@ -2,11 +2,15 @@
 const isSnakeCase = require("is-snake-case");
 const is = require("@slimio/is");
 
+// Require Internal Dependencies
+const ComponentFactory = require("./componentFactory");
+
 /**
  * @class CallbackFactory
  *
  * @property {String} name
  * @property {String} returnValue
+ * @property {any[]} components
  */
 class CallbackFactory {
 
@@ -26,6 +30,25 @@ class CallbackFactory {
         this.name = name;
         /** @type {String} */
         this.returnValue = null;
+        this.components = new Set();
+    }
+
+    /**
+     * @public
+     * @method add
+     * @param {!ComponentFactory} component component to add
+     * @returns {this}
+     *
+     * @throws {TypeError}
+     */
+    add(component) {
+        if (!(component instanceof ComponentFactory)) {
+            throw new TypeError("component should be instanceof ComponentFactory!");
+        }
+
+        this.components.add(component);
+
+        return this;
     }
 
     /**
@@ -49,10 +72,15 @@ class CallbackFactory {
     /**
      * @public
      * @method toString
+     * @param {!String} addonName name of the current Addon!
      * @returns {String}
      */
-    toString() {
-        return `async function ${this.name}() {\n    return ${this.returnValue};\n}`;
+    toString(addonName) {
+        const components = [...this.components]
+            .map((co) => `\t${co.toString(addonName)}`)
+            .join("").concat("\n");
+
+        return `async function ${this.name}() {\n${components}\treturn ${this.returnValue};\n}`;
     }
 
     // eslint-disable-next-line

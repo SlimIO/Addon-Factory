@@ -115,7 +115,7 @@ class AddonFactory {
 
         fRet.push("\n", AddonParts.create(this.name));
         if (this.splitCallbackRegistration) {
-            fRet.push(...this[Callbacks].map((cb) => `${cb.toString()}\n\n`));
+            fRet.push(...this[Callbacks].map((cb) => `${cb.toString(this.name)}\n\n`));
             for (const cb of this[Callbacks]) {
                 fRet.push(AddonParts.registerCallback(this.name, cb.name));
             }
@@ -123,11 +123,11 @@ class AddonFactory {
         }
         else {
             for (const cb of this[Callbacks]) {
-                fRet.push(AddonParts.registerCallbackInOne(this.name, cb.name, cb.toString()));
+                fRet.push(AddonParts.registerCallbackInOne(this.name, cb.name, cb.toString(this.name)));
             }
         }
 
-        for (const [name, options] of this.schedules.entries) {
+        for (const [name, options] of this.schedules.entries()) {
             fRet.push(AddonParts.schedule(this.name, name, options));
         }
 

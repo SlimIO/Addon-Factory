@@ -3,6 +3,19 @@ declare namespace Factories {
         splitCallbackRegistration?: boolean;
     }
 
+    declare class ComponentFactory {
+        constructor();
+
+        toString(addonName: string): string;
+    }
+
+    declare class Message extends ComponentFactory {
+        constructor(target: string);
+
+        arg(value: any): this;
+        toString(addonName: string): string;
+    }
+
     declare class AddonFactory {
         constructor(name: string, options?: AddonOptions);
 
@@ -21,15 +34,21 @@ declare namespace Factories {
 
         public name: string;
         public returnValue: string;
+        public components: ComponentFactory[];
 
+        add(component: ComponentFactory): this;
         return(value: any): this;
         toString(): string;
     }
 
-    export interface Factory {
-        CallbackFactory: typeof CallbackFactory;
-        AddonFactory: typeof AddonFactory;
+    interface Components {
+        Message: typeof Message;
     }
+
+    export const CallbackFactory: typeof CallbackFactory;
+    export const AddonFactory: typeof CallbackFactory;
+    export const Components: Components;
+
 }
 
 export as namespace Factories;
