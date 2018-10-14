@@ -1,5 +1,5 @@
 // Require NodeJS Dependencies
-const { writeFile, mkdir } = require("fs").promises;
+const { writeFile } = require("fs").promises;
 const { join } = require("path");
 
 // Require Third-Party Dependencies
@@ -26,7 +26,7 @@ const Callbacks = Symbol("Callbacks");
 
 /**
  * @class AddonFactory
- * 
+ *
  * @property {String} name
  * @property {Boolean} splitCallbackRegistration
  */
@@ -53,14 +53,14 @@ class AddonFactory {
         /** @type {Map<String, String>} */
         this.schedules = new Map();
 
-        this.splitCallbackRegistration = is.bool(options.splitCallbackRegistration) ? options.splitCallbackRegistration : true;
+        this.splitCallbackRegistration = is.bool(options.splitCallbackRegistration) ?
+            options.splitCallbackRegistration : true;
     }
 
     /**
      * @public
      * @method addCallback
-     * @param {!String} name callback name
-     * @param {*} returnValue callback return value
+     * @param {!CallbackFactory} callback callback
      * @returns {this}
      */
     addCallback(callback) {
@@ -115,7 +115,7 @@ class AddonFactory {
 
         fRet.push("\n", AddonParts.create(this.name));
         if (this.splitCallbackRegistration) {
-            fRet.push(...this[Callbacks].map((cb) => cb.toString() + "\n\n"));
+            fRet.push(...this[Callbacks].map((cb) => `${cb.toString()}\n\n`));
             for (const cb of this[Callbacks]) {
                 fRet.push(AddonParts.registerCallback(this.name, cb.name));
             }
@@ -130,7 +130,7 @@ class AddonFactory {
         for (const [name, options] of this.schedules.entries) {
             fRet.push(AddonParts.schedule(this.name, name, options));
         }
-        
+
         fRet.push(AddonParts.ready(this.name), AddonParts.export(this.name));
 
         // Write Index.js File
