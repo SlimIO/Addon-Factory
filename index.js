@@ -1,2 +1,2 @@
-const exports = require("./src");
-module.exports = exports;
+const exp = require("./src");
+module.exports = exp;
