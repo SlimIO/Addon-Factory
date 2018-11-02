@@ -25,11 +25,11 @@
   "devDependencies": {
     "@escommunity/minami": "^1.0.0",
     "@slimio/eslint-config": "^1.1.8",
-    "@types/node": "^10.11.7",
+    "@types/node": "^10.12.2",
     "@types/rimraf": "^2.0.2",
     "ava": "^0.25.0",
-    "eslint": "^5.6.1",
-    "nyc": "^13.0.1",
+    "eslint": "^5.8.0",
+    "nyc": "^13.1.0",
     "rimraf": "^2.6.2"
   }
 }
