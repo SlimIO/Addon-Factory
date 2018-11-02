@@ -28,9 +28,41 @@ class Message extends ComponentFactory {
     }
 
     /**
+     * @method timeOut
+     * @param {!Number} timeMs timeOut time in Milliseconds
+     * @returns {Message}
+     *
+     * @throws {TypeError}
+     */
+    timeOut(timeMs) {
+        if (!is.number(timeMs)) {
+            throw new TypeError("timeMs should be typeof number");
+        }
+        Reflect.set(this.options, "timeout", timeMs);
+
+        return this;
+    }
+
+    /**
+     * @method noReturn
+     * @param {!Boolean} bool New noReturn value
+     * @returns {Message}
+     *
+     * @throws {TypeError}
+     */
+    noReturn(bool) {
+        if (!is.bool(bool)) {
+            throw new TypeError("bool should be typeof Boolean");
+        }
+        this.options.noReturn = bool;
+
+        return this;
+    }
+
+    /**
      * @method arg
      * @param {any} value any javascript primitive value!
-     * @returns {this}
+     * @returns {Message}
      *
      * @throws {TypeError}
      */
