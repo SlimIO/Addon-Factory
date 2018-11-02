@@ -79,8 +79,9 @@ class CallbackFactory {
         const components = [...this.components]
             .map((co) => `\t${co.toString(addonName)}`)
             .join("").concat("\n");
+        const returnValue = this.returnValue !== null ? `\treturn ${this.returnValue};` : "";
 
-        return `async function ${this.name}() {\n${components}\treturn ${this.returnValue};\n}`;
+        return `async function ${this.name}() {\n${components}${returnValue}\n}`;
     }
 
     // eslint-disable-next-line
