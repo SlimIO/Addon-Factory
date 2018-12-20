@@ -4,8 +4,11 @@
   "description": "SlimIO Addon Factory",
   "main": "index.js",
   "scripts": {
-    "prepublish": "pkg-ok",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "pkg-ok",
+    "test": "ava --verbose",
+    "doc": "jsdoc -c ./jsdoc.json -r -R ./README.md -P ./package.json --verbose",
+    "coverage": "nyc npm test",
+    "report": "nyc report --reporter=html"
   },
   "engines": {
     "node": ">=10"
