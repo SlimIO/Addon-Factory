@@ -5,8 +5,7 @@ const avaTest = require("ava");
 const { AddonFactory } = require("..");
 
 avaTest("AddonFactory (name argument should be typeof string)", (assert) => {
-    const { message } = assert.throws(() => {
+    assert.throws(() => {
         new AddonFactory(5);
-    }, TypeError);
-    assert.is(message, "(name argument should be typeof string)");
+    }, { instanceOf: TypeError, message: "(name argument should be typeof string)" });
 });
