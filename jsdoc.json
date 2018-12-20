@@ -7,7 +7,11 @@
     },
     "source": {
         "include": [
-			"index.js"
+            "index.js",
+            "./src/addonFactory.js",
+            "./src/callbackFactory.js",
+            "./src/componentFactory.js",
+            "./src/components/message.js"
         ],
         "exclude": [
             "node_modules",
