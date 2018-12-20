@@ -31,7 +31,6 @@ const Callbacks = Symbol("Callbacks");
  * @property {Boolean} splitCallbackRegistration
  */
 class AddonFactory {
-
     /**
      * @constructor
      * @param {!String} name addonName

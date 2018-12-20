@@ -13,7 +13,6 @@ const ComponentFactory = require("./componentFactory");
  * @property {any[]} components
  */
 class CallbackFactory {
-
     /**
      * @constructor
      * @param {!String} name Callback name
@@ -79,7 +78,7 @@ class CallbackFactory {
         const components = [...this.components]
             .map((co) => `\t${co.toString(addonName)}`)
             .join("").concat("\n");
-        const returnValue = this.returnValue !== null ? `\treturn ${this.returnValue};` : "";
+        const returnValue = this.returnValue === null ? "" : `\treturn ${this.returnValue};`;
 
         return `async function ${this.name}() {\n${components}${returnValue}\n}`;
     }
@@ -88,7 +87,6 @@ class CallbackFactory {
     get [Symbol.toStringTag]() {
         return "Callback";
     }
-
 }
 
 module.exports = CallbackFactory;

@@ -9,7 +9,6 @@ const ComponentFactory = require("../componentFactory");
  * @extends ComponentFactory
  */
 class Message extends ComponentFactory {
-
     /**
      * @constructor
      * @param {!String} target message target
@@ -83,7 +82,6 @@ class Message extends ComponentFactory {
     toString(addonName) {
         return `${addonName}.sendMessage("${this.target}", ${JSON.stringify(this.options)});\n`;
     }
-
 }
 
 module.exports = Message;
