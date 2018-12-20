@@ -23,8 +23,8 @@
     "type": "git",
     "url": "git+https://github.com/SlimIO/AddonFactory.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["SlimIO", "Factory", "Addon", "Mock"],
+  "author": "SlimIO",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/SlimIO/AddonFactory/issues"
