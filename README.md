@@ -1,6 +1,7 @@
 # AddonFactory
-![MIT](https://img.shields.io/github/license/mashape/apistatus.svg)
 ![V1.0](https://img.shields.io/badge/version-0.5.0-blue.svg)
+![MIT](https://img.shields.io/github/license/mashape/apistatus.svg)
+
 SlimIO Addon Factory. This API has been created to generate generic boilerplate of SlimIO Addon(s).
 
 ## Getting Started
@@ -32,5 +33,5 @@ async function main() {
 main().catch(console.error);
 ```
 
-## Licence
+## License
 MIT
