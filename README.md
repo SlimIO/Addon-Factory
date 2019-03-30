@@ -45,6 +45,7 @@ const myAddon = new AddonFactory("myAddon");
 ```
 
 Available options are:
+
 | name | default value | description |
 | --- | --- | --- |
 | splitCallbackRegistration | **true** | separe function declaration from callback declaration |
