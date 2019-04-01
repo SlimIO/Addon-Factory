@@ -1,5 +1,6 @@
 declare namespace Factories {
     interface AddonOptions {
+        version?: string;
         splitCallbackRegistration?: boolean;
     }
 
@@ -20,6 +21,7 @@ declare namespace Factories {
         constructor(name: string, options?: AddonOptions);
 
         public name: string;
+        public version: string;
         public splitCallbackRegistration: boolean;
         public callbacks: Set<string>;
         public schedules: Map<string, string>;

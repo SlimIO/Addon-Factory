@@ -13,7 +13,7 @@ const CallbackFactory = require("./callbackFactory");
 const AddonParts = {
     require: "const Addon = require(\"@slimio/addon\");\n",
     requireScheduler: "const Scheduler = require(\"@slimio/scheduler\");\n",
-    create: taggedString`const ${0} = new Addon("${0}");\n\n`,
+    create: taggedString`const ${0} = new Addon("${0}", ${1});\n\n`,
     export: taggedString`module.exports = ${0};\n`,
     schedule: taggedString`${0}.schedule("${1}", new Scheduler(${2}));\n`,
     registerCallback: taggedString`${0}.registerCallback("${1}", ${1});\n`,
@@ -33,16 +33,24 @@ const Callbacks = Symbol("Callbacks");
 class AddonFactory {
     /**
      * @constructor
+     * @memberof AddonFactory#
      * @param {!String} name addonName
-     * @param {Object=} [options={}] Factory Options
+     * @param {Object} [options={}] Factory Options
+     * @param {Boolean} [options.splitCallbackRegistration] Split Callback Registration
+     * @param {String} [options.version=1.0.0] Addon version
      * @throws {TypeError}
      */
     constructor(name, options = Object.create(null)) {
         if (typeof name !== "string") {
             throw new TypeError("name argument should be typeof string");
         }
+        if (!is.nullOrUndefined(options.version) && typeof options.version !== "string") {
+            throw new TypeError("options.version must be typeof string");
+        }
 
         this.name = name;
+        this.version = options.version || "1.0.0";
+
         /** @type {CallbackFactory[]} */
         this[Callbacks] = [];
 
@@ -112,7 +120,7 @@ class AddonFactory {
             fRet.push(AddonParts.requireScheduler);
         }
 
-        fRet.push("\n", AddonParts.create(this.name));
+        fRet.push("\n", AddonParts.create(this.name, JSON.stringify({ version: this.version })));
         if (this.splitCallbackRegistration) {
             fRet.push(...this[Callbacks].map((cb) => `${cb.toString(this.name)}\n\n`));
             for (const cb of this[Callbacks]) {
