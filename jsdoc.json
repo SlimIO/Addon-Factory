@@ -8,6 +8,7 @@
     "source": {
         "include": [
             "index.js",
+            "./src/index.js",
             "./src/addonFactory.js",
             "./src/callbackFactory.js",
             "./src/componentFactory.js",
