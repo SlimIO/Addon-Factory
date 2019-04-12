@@ -56,6 +56,7 @@ typings/
 
 # dotenv environment variables file
 .environment
+.env
 
 docs/
 jsdoc/
