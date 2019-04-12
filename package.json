@@ -10,6 +10,14 @@
     "coverage": "nyc npm test",
     "report": "nyc report --reporter=html"
   },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": false,
+    "lines": 98,
+    "statements": 98,
+    "functions": 98,
+    "branches": 90
+  },
   "engines": {
     "node": ">=10"
   },
