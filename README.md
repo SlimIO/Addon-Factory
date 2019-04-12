@@ -4,6 +4,9 @@
 
 SlimIO Addon Factory. This package has been created to programmatically generate a SlimIO Addon (with all required default settings).
 
+## Requirements
+- Node.js v10 or higher
+
 ## Getting Started
 
 This package is available in the Node Package Repository and can be easily installed with [npm](https://docs.npmjs.com/getting-started/what-is-npm) or [yarn](https://yarnpkg.com).
@@ -118,5 +121,5 @@ const Ex = new AddonFactory("Ex")
     .generate(__dirname);
 ```
 
-## Licence
+## License
 MIT
