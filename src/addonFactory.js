@@ -67,6 +67,7 @@ class AddonFactory {
     /**
      * @public
      * @method addCallback
+     * @memberof AddonFactory#
      * @param {!CallbackFactory} callback callback
      * @returns {this}
      */
@@ -83,6 +84,7 @@ class AddonFactory {
     /**
      * @public
      * @method scheduleCallback
+     * @memberof AddonFactory#
      * @param {!String} callbackName callback name
      * @param {Object=} options scheduler options!
      * @returns {this}
@@ -100,6 +102,7 @@ class AddonFactory {
      * @public
      * @async
      * @method generater
+     * @memberof AddonFactory#
      * @param {!String} path directory (or path) where we want to create the Addon
      * @returns {Promise<this>}
      *

@@ -11,6 +11,7 @@ const ComponentFactory = require("../componentFactory");
 class Message extends ComponentFactory {
     /**
      * @constructor
+     * @memberof Message#
      * @param {!String} target message target
      */
     constructor(target) {
@@ -28,6 +29,7 @@ class Message extends ComponentFactory {
 
     /**
      * @method timeOut
+     * @memberof Message#
      * @param {!Number} timeMs timeOut time in Milliseconds
      * @returns {Message}
      *
@@ -44,6 +46,7 @@ class Message extends ComponentFactory {
 
     /**
      * @method noReturn
+     * @memberof Message#
      * @param {!Boolean} bool New noReturn value
      * @returns {Message}
      *
@@ -60,6 +63,7 @@ class Message extends ComponentFactory {
 
     /**
      * @method arg
+     * @memberof Message#
      * @param {any} value any javascript primitive value!
      * @returns {Message}
      *
@@ -76,6 +80,7 @@ class Message extends ComponentFactory {
 
     /**
      * @method toString
+     * @memberof Message#
      * @param {!String} addonName current addon Name
      * @returns {String}
      */

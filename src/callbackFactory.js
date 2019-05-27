@@ -15,6 +15,7 @@ const ComponentFactory = require("./componentFactory");
 class CallbackFactory {
     /**
      * @constructor
+     * @memberof CallbackFactory#
      * @param {!String} name Callback name
      * @throws {TypeError}
      */
@@ -35,6 +36,7 @@ class CallbackFactory {
     /**
      * @public
      * @method add
+     * @memberof CallbackFactory#
      * @param {!ComponentFactory} component component to add
      * @returns {this}
      *
@@ -54,6 +56,7 @@ class CallbackFactory {
      * @public
      * @chainable
      * @method return
+     * @memberof CallbackFactory#
      * @param {any} value Any JavaScript Object
      * @returns {this}
      *
@@ -71,6 +74,7 @@ class CallbackFactory {
     /**
      * @public
      * @method toString
+     * @memberof CallbackFactory#
      * @param {!String} addonName name of the current Addon!
      * @returns {String}
      */
