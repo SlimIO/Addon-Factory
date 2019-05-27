@@ -7,12 +7,17 @@ const ComponentFactory = require("../componentFactory");
 /**
  * @class Message
  * @extends ComponentFactory
+ * @property {String} target message target
+ * @property {Boolean} noReturn
+ * @property {Array} args
  */
 class Message extends ComponentFactory {
     /**
      * @constructor
      * @memberof Message#
      * @param {!String} target message target
+     * @param {!Boolean} noReturn
+     * @param {!Array} args
      */
     constructor(target) {
         super();

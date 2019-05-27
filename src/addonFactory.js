@@ -27,8 +27,11 @@ const Callbacks = Symbol("Callbacks");
 /**
  * @class AddonFactory
  *
- * @property {String} name
- * @property {Boolean} splitCallbackRegistration
+ * @property {String} name addonName
+ * @property {String} version Addon version
+ * @property {Boolean} splitCallbackRegistration Split Callback Registration
+ * @property {Set} callbacks
+ * @property {Map} schedules
  */
 class AddonFactory {
     /**

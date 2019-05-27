@@ -10,7 +10,7 @@ const ComponentFactory = require("./componentFactory");
  *
  * @property {String} name
  * @property {String} returnValue
- * @property {any[]} components
+ * @property {Set} components
  */
 class CallbackFactory {
     /**
