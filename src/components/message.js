@@ -16,8 +16,6 @@ class Message extends ComponentFactory {
      * @constructor
      * @memberof Message#
      * @param {!String} target message target
-     * @param {!Boolean} noReturn
-     * @param {!Array} args
      */
     constructor(target) {
         super();
