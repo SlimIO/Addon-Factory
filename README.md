@@ -121,5 +121,13 @@ const Ex = new AddonFactory("Ex")
     .generate(__dirname);
 ```
 
+## Dependencies
+
+|Name|Refactoring|Security Risk|Usage|
+|---|---|---|---|
+|[@slimio/is](https://github.com/SlimIO/is#readme)|Minor|Low|Type checker|
+|[@slimio/utils](https://github.com/SlimIO/Utils#readme)|Minor|High|Bunch of useful functions|
+|[is-snake-case](https://github.com/sunitJindal/is-snake-case#readme)|Minor|Low|Snake case checker|
+
 ## License
 MIT
