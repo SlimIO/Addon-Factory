@@ -1,3 +1,5 @@
+"use strict";
+
 // Require NodeJS Dependencies
 const { writeFile } = require("fs").promises;
 const { join } = require("path");
@@ -27,20 +29,20 @@ const Callbacks = Symbol("Callbacks");
 /**
  * @class AddonFactory
  *
- * @property {String} name addonName
- * @property {String} version Addon version
- * @property {Boolean} splitCallbackRegistration Split Callback Registration
+ * @property {string} name addonName
+ * @property {string} version Addon version
+ * @property {boolean} splitCallbackRegistration Split Callback Registration
  * @property {Set} callbacks
  * @property {Map} schedules
  */
 class AddonFactory {
     /**
-     * @constructor
+     * @class
      * @memberof AddonFactory#
-     * @param {!String} name addonName
-     * @param {Object} [options={}] Factory Options
-     * @param {Boolean} [options.splitCallbackRegistration] Split Callback Registration
-     * @param {String} [options.version=1.0.0] Addon version
+     * @param {!string} name addonName
+     * @param {object} [options={}] Factory Options
+     * @param {boolean} [options.splitCallbackRegistration] Split Callback Registration
+     * @param {string} [options.version=1.0.0] Addon version
      * @throws {TypeError}
      */
     constructor(name, options = Object.create(null)) {
@@ -57,10 +59,10 @@ class AddonFactory {
         /** @type {CallbackFactory[]} */
         this[Callbacks] = [];
 
-        /** @type {Set<String>} */
+        /** @type {Set<string>} */
         this.callbacks = new Set();
 
-        /** @type {Map<String, String>} */
+        /** @type {Map<string, string>} */
         this.schedules = new Map();
 
         this.splitCallbackRegistration = is.bool(options.splitCallbackRegistration) ?
@@ -69,7 +71,7 @@ class AddonFactory {
 
     /**
      * @public
-     * @method addCallback
+     * @function addCallback
      * @memberof AddonFactory#
      * @param {!CallbackFactory} callback callback
      * @returns {this}
@@ -86,10 +88,10 @@ class AddonFactory {
 
     /**
      * @public
-     * @method scheduleCallback
+     * @function scheduleCallback
      * @memberof AddonFactory#
-     * @param {!String} callbackName callback name
-     * @param {Object=} options scheduler options!
+     * @param {!string} callbackName callback name
+     * @param {object} [options] scheduler options!
      * @returns {this}
      */
     scheduleCallback(callbackName, options) {
@@ -104,9 +106,9 @@ class AddonFactory {
     /**
      * @public
      * @async
-     * @method generater
+     * @function generater
      * @memberof AddonFactory#
-     * @param {!String} path directory (or path) where we want to create the Addon
+     * @param {!string} path directory (or path) where we want to create the Addon
      * @returns {Promise<this>}
      *
      * @throws {TypeError}

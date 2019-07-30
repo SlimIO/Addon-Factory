@@ -1,3 +1,5 @@
+"use strict";
+
 // Require Third-party Dependencies
 const isSnakeCase = require("is-snake-case");
 const is = require("@slimio/is");
@@ -8,15 +10,15 @@ const ComponentFactory = require("./componentFactory");
 /**
  * @class CallbackFactory
  *
- * @property {String} name
- * @property {String} returnValue
+ * @property {string} name
+ * @property {string} returnValue
  * @property {Set} components
  */
 class CallbackFactory {
     /**
-     * @constructor
+     * @function
      * @memberof CallbackFactory#
-     * @param {!String} name Callback name
+     * @param {!string} name Callback name
      * @throws {TypeError}
      */
     constructor(name) {
@@ -28,14 +30,14 @@ class CallbackFactory {
         }
 
         this.name = name;
-        /** @type {String} */
+        /** @type {string} */
         this.returnValue = null;
         this.components = new Set();
     }
 
     /**
      * @public
-     * @method add
+     * @function add
      * @memberof CallbackFactory#
      * @param {!ComponentFactory} component component to add
      * @returns {this}
@@ -55,7 +57,7 @@ class CallbackFactory {
     /**
      * @public
      * @chainable
-     * @method return
+     * @function return
      * @memberof CallbackFactory#
      * @param {any} value Any JavaScript Object
      * @returns {this}
@@ -73,10 +75,10 @@ class CallbackFactory {
 
     /**
      * @public
-     * @method toString
+     * @function toString
      * @memberof CallbackFactory#
-     * @param {!String} addonName name of the current Addon!
-     * @returns {String}
+     * @param {!string} addonName name of the current Addon!
+     * @returns {string}
      */
     toString(addonName) {
         const components = [...this.components]

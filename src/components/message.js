@@ -1,3 +1,5 @@
+"use strict";
+
 // Require Third-party Dependencies
 const is = require("@slimio/is");
 
@@ -6,16 +8,16 @@ const ComponentFactory = require("../componentFactory");
 
 /**
  * @class Message
- * @extends ComponentFactory
- * @property {String} target message target
- * @property {Boolean} noReturn
+ * @augments ComponentFactory
+ * @property {string} target message target
+ * @property {boolean} noReturn
  * @property {Array} args
  */
 class Message extends ComponentFactory {
     /**
-     * @constructor
+     * @class
      * @memberof Message#
-     * @param {!String} target message target
+     * @param {!string} target message target
      */
     constructor(target) {
         super();
@@ -31,9 +33,9 @@ class Message extends ComponentFactory {
     }
 
     /**
-     * @method timeOut
+     * @function timeOut
      * @memberof Message#
-     * @param {!Number} timeMs timeOut time in Milliseconds
+     * @param {!number} timeMs timeOut time in Milliseconds
      * @returns {Message}
      *
      * @throws {TypeError}
@@ -48,9 +50,9 @@ class Message extends ComponentFactory {
     }
 
     /**
-     * @method noReturn
+     * @function noReturn
      * @memberof Message#
-     * @param {!Boolean} bool New noReturn value
+     * @param {!boolean} bool New noReturn value
      * @returns {Message}
      *
      * @throws {TypeError}
@@ -65,7 +67,7 @@ class Message extends ComponentFactory {
     }
 
     /**
-     * @method arg
+     * @function arg
      * @memberof Message#
      * @param {any} value any javascript primitive value!
      * @returns {Message}
@@ -82,10 +84,10 @@ class Message extends ComponentFactory {
     }
 
     /**
-     * @method toString
+     * @function toString
      * @memberof Message#
-     * @param {!String} addonName current addon Name
-     * @returns {String}
+     * @param {!string} addonName current addon Name
+     * @returns {string}
      */
     toString(addonName) {
         return `${addonName}.sendMessage("${this.target}", ${JSON.stringify(this.options)});\n`;
