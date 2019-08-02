@@ -37,6 +37,11 @@
     "Addon",
     "Mock"
   ],
+  "files": [
+      "index.js",
+      "index.d.ts",
+      "src"
+  ],
   "author": "SlimIO",
   "license": "MIT",
   "bugs": {
