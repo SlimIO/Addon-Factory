@@ -5,7 +5,7 @@
 SlimIO Addon Factory. This package has been created to programmatically generate a SlimIO Addon (with all required default settings).
 
 ## Requirements
-- Node.js v10 or higher
+- [Node.js](https://nodejs.org/en/) v10 or higher
 
 ## Getting Started
 
