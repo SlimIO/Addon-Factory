@@ -56,7 +56,6 @@ class CallbackFactory {
 
     /**
      * @public
-     * @chainable
      * @function return
      * @memberof CallbackFactory#
      * @param {any} value Any JavaScript Object
