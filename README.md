@@ -1,6 +1,10 @@
 # AddonFactory
-![V1.0](https://img.shields.io/badge/version-0.5.0-blue.svg)
+![version](https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/SlimIO/Addon-Factory/master/package.json?token=AOgWw3vrgQuu-U4fz1c7yYZyc7XJPNtrks5catjdwA%3D%3D&query=$.version&label=Version)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/SlimIO/Addon-Factory/commit-activity)
 ![MIT](https://img.shields.io/github/license/mashape/apistatus.svg)
+![dep](https://img.shields.io/david/SlimIO/Addon-Factory)
+![size](https://img.shields.io/github/languages/code-size/SlimIO/Addon-Factory)
+[![Known Vulnerabilities](https://snyk.io//test/github/SlimIO/Addon-Factory/badge.svg?targetFile=package.json)](https://snyk.io//test/github/SlimIO/Addon-Factory?targetFile=package.json)
 
 SlimIO Addon Factory. This package has been created to programmatically generate a SlimIO Addon (with all required default settings).
 
