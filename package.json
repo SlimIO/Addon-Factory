@@ -40,7 +40,8 @@
   "files": [
     "index.js",
     "index.d.ts",
-    "src"
+    "src/*.js",
+    "src/components/*.js"
   ],
   "author": "SlimIO",
   "license": "MIT",
