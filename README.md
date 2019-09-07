@@ -5,7 +5,7 @@
 ![dep](https://img.shields.io/david/SlimIO/Addon-Factory)
 ![size](https://img.shields.io/github/languages/code-size/SlimIO/Addon-Factory)
 [![Known Vulnerabilities](https://snyk.io//test/github/SlimIO/Addon-Factory/badge.svg?targetFile=package.json)](https://snyk.io//test/github/SlimIO/Addon-Factory?targetFile=package.json)
-[![Build Status](https://travis-ci.com/SlimIO/Addon-Factory.svg?branch=master)](https://travis-ci.com/SlimIO/Addon-Factory)
+[![Build Status](https://travis-ci.com/SlimIO/Addon-Factory.svg?branch=master)](https://travis-ci.com/SlimIO/Addon-Factory) [![Greenkeeper badge](https://badges.greenkeeper.io/SlimIO/Addon-Factory.svg)](https://greenkeeper.io/)
 
 SlimIO Addon Factory. This package has been created to programmatically generate a SlimIO Addon (with all required default settings).
 
