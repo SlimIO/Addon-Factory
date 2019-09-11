@@ -15,6 +15,8 @@ const CallbackFactory = require("./callbackFactory");
 const AddonParts = {
     require: "const Addon = require(\"@slimio/addon\");\n",
     requireScheduler: "const Scheduler = require(\"@slimio/scheduler\");\n",
+    requireAlert: "const alert = require(\"@slimio/alert\");\n",
+    requireMetric: "const metrics = require(\"@slimio/metrics\");\n",
     create: taggedString`const ${0} = new Addon("${0}", ${1});\n\n`,
     export: taggedString`module.exports = ${0};\n`,
     schedule: taggedString`${0}.schedule("${1}", new Scheduler(${2}));\n`,
@@ -55,6 +57,9 @@ class AddonFactory {
 
         this.name = name;
         this.version = options.version || "1.0.0";
+        this.requireScheduler = options.requireScheduler || false;
+        this.requireAlert = options.requireAlert || false;
+        this.requireMetric = options.requireMetric || false;
 
         /** @type {CallbackFactory[]} */
         this[Callbacks] = [];
@@ -123,9 +128,15 @@ class AddonFactory {
         await createDirectory(addonDir);
 
         // Generate the Addon code
-        const fRet = [AddonParts.require];
-        if (this.schedules.size > 0) {
+        const fRet = ["\"use strict\";\n", AddonParts.require];
+        if (this.requireScheduler || this.schedules.size > 0) {
             fRet.push(AddonParts.requireScheduler);
+        }
+        if (this.requireAlert) {
+            fRet.push(AddonParts.requireAlert);
+        }
+        if (this.requireMetric) {
+            fRet.push(AddonParts.requireMetric);
         }
 
         fRet.push("\n", AddonParts.create(this.name, JSON.stringify({ version: this.version })));

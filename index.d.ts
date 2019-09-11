@@ -2,6 +2,9 @@ declare namespace Factories {
     interface AddonOptions {
         version?: string;
         splitCallbackRegistration?: boolean;
+        requireScheduler?: boolean;
+        requireAlert?: boolean;
+        requireMetric?: boolean;
     }
 
     class ComponentFactory {
@@ -25,6 +28,9 @@ declare namespace Factories {
         public splitCallbackRegistration: boolean;
         public callbacks: Set<string>;
         public schedules: Map<string, string>;
+        public requireScheduler: boolean;
+        public requireAlert: boolean;
+        public requireMetric: boolean;
 
         addCallback(callback: CallbackFactory): this;
         scheduleCallback(callbackName: string, options: any): this;
