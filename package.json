@@ -8,7 +8,9 @@
     "test": "ava --verbose",
     "doc": "jsdoc -c ./jsdoc.json -r -R ./README.md -P ./package.json --verbose",
     "coverage": "nyc npm test",
-    "report": "nyc report --reporter=html"
+    "report": "nyc report --reporter=html",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "nyc": {
     "check-coverage": true,
@@ -52,7 +54,8 @@
   "dependencies": {
     "@slimio/is": "^1.5.1",
     "@slimio/utils": "^0.9.0",
-    "is-snake-case": "^0.1.0"
+    "is-snake-case": "^0.1.0",
+    "snyk": "^1.321.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -66,5 +69,6 @@
     "jsdoc": "^3.6.4",
     "nyc": "^15.0.1",
     "pkg-ok": "^2.3.1"
-  }
+  },
+  "snyk": true
 }
